@@ -86,7 +86,7 @@ pub fn penalty_state(env: Env, penalty_id: u64) -> PenaltyRecord
 `PenaltyRecord`
 
 ### `preview_slash`
-Preview a proposed slash against an account without mutating contract state. The preview uses the same non-negative amount and sufficient-balance checks as `apply_penalty`.
+Preview a proposed slash against the account balance without mutating state.
 
 ```rust
 pub fn preview_slash(env: Env, account: Address, slash_amount: i128, token_address: Address) -> SlashPreview
@@ -106,7 +106,7 @@ pub fn preview_slash(env: Env, account: Address, slash_amount: i128, token_addre
 `SlashPreview`
 
 ### `penalty_summary`
-Return deterministic account-level penalty summary data for administrative review tooling. `total_slashed` accumulates across all applied penalties, while `current_status` tracks the latest penalty state transition for the account.
+Summarize the slashing history and latest penalty state for an account.
 
 ```rust
 pub fn penalty_summary(env: Env, account: Address) -> PenaltySummary
